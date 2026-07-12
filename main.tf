@@ -5,7 +5,7 @@ locals {
     for k1, v1 in var.application_load_balancers : {
       for k2, v2 in coalesce(v1.application_load_balancer_frontends, {}) :
       "${k1}/${k2}" => merge(v2, {
-        application_load_balancer_id = module.application_load_balancers.application_load_balancers["${k1}"].id
+        application_load_balancer_id = module.application_load_balancers.application_load_balancers_id["${k1}"]
       })
     }
   ]...)
@@ -14,7 +14,7 @@ locals {
     for k1, v1 in var.application_load_balancers : {
       for k2, v2 in coalesce(v1.application_load_balancer_security_policies, {}) :
       "${k1}/${k2}" => merge(v2, {
-        application_load_balancer_id = module.application_load_balancers.application_load_balancers["${k1}"].id
+        application_load_balancer_id = module.application_load_balancers.application_load_balancers_id["${k1}"]
       })
     }
   ]...)
@@ -23,7 +23,7 @@ locals {
     for k1, v1 in var.application_load_balancers : {
       for k2, v2 in coalesce(v1.application_load_balancer_subnet_associations, {}) :
       "${k1}/${k2}" => merge(v2, {
-        application_load_balancer_id = module.application_load_balancers.application_load_balancers["${k1}"].id
+        application_load_balancer_id = module.application_load_balancers.application_load_balancers_id["${k1}"]
       })
     }
   ]...)
