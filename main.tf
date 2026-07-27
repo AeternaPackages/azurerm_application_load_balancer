@@ -30,24 +30,24 @@ locals {
 }
 
 module "application_load_balancers" {
-  source                     = "git::https://github.com/AeternaModules/azurerm_application_load_balancer.git?ref=v4.80.0"
+  source                     = "git::https://github.com/AeternaModules/azurerm_application_load_balancer.git?ref=v4.81.0"
   application_load_balancers = local.application_load_balancers
 }
 
 module "application_load_balancer_frontends" {
-  source                              = "git::https://github.com/AeternaModules/azurerm_application_load_balancer_frontend.git?ref=v4.80.0"
+  source                              = "git::https://github.com/AeternaModules/azurerm_application_load_balancer_frontend.git?ref=v4.81.0"
   application_load_balancer_frontends = local.application_load_balancer_frontends
   depends_on                          = [module.application_load_balancers]
 }
 
 module "application_load_balancer_security_policies" {
-  source                                      = "git::https://github.com/AeternaModules/azurerm_application_load_balancer_security_policy.git?ref=v4.80.0"
+  source                                      = "git::https://github.com/AeternaModules/azurerm_application_load_balancer_security_policy.git?ref=v4.81.0"
   application_load_balancer_security_policies = local.application_load_balancer_security_policies
   depends_on                                  = [module.application_load_balancers]
 }
 
 module "application_load_balancer_subnet_associations" {
-  source                                        = "git::https://github.com/AeternaModules/azurerm_application_load_balancer_subnet_association.git?ref=v4.80.0"
+  source                                        = "git::https://github.com/AeternaModules/azurerm_application_load_balancer_subnet_association.git?ref=v4.81.0"
   application_load_balancer_subnet_associations = local.application_load_balancer_subnet_associations
   depends_on                                    = [module.application_load_balancers]
 }
